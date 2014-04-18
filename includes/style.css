@@ -31,8 +31,17 @@
 }
 .close {
   position: fixed;
-  top: 5px;
+  top: 1px;
   right: 10px;
   font-size: 2rem;
   color: #fff;
+}
+.tnbench-options {
+  background: none repeat scroll 0 0 #008000;
+  box-shadow: 2px 2px 2px #000000;
+  float: right;
+  font-style: italic;
+  line-height: 10px;
+  margin: 38px 7px 9px 0;
+  padding: 6px;
 }

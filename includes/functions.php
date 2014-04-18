@@ -3,7 +3,7 @@
 function tnbench_global_callback($field){
 	$selected = get_option('tnbench_forced', true);
 	$selText = ($selected) ? ' checked="checked" ' : ' ';
-	echo '<input type="checkbox" name="'.$field["id"].'" id="'.$field["id"].'" '.$selText.'>'."\n";
+	echo '<input type="checkbox" name="'.$field["id"].'" id="'.$field["id"].'" '.$selText.'><span class="description">development/testing mode?</span>'."\n";
 }
 add_action('admin_init', 'tnbench_thumbnails_init');
 
@@ -26,6 +26,7 @@ function tnbench_end(){
 
 	$GLOBALS['bench']->end();
 	$browser = explode('/', $_SERVER['HTTP_USER_AGENT']);
+	$tnbench_option = get_option('tnbench_forced', true);
 
 	echo '		<div data-alert class="tndata-wrapper">'."\n";
 	echo '			<div>'."\n";
@@ -49,6 +50,7 @@ function tnbench_end(){
 	echo '				<br><div style="white-space: nowrap;">'.$_SERVER['SCRIPT_FILENAME'].'</div>'."\n";
 	echo '			</div>'."\n";
 	echo '			<a href="#" class="close">&times;</a>'."\n";
+	if( $tnbench_option) echo '			<span class="tnbench-options">* forced from wp-admin/settings/reading</a>'."\n";
 	echo '		</div>'."\n\n";
 	echo '		<script>'."\n";
 	echo '		window.onresize=function(){'."\n";
